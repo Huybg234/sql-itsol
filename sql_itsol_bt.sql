@@ -209,9 +209,8 @@ select student.name from student
 join faculty on student.faculty_id = faculty.id
 where faculty.name ='Anh - Văn' or faculty.name ='Vật lý';
 -- 2. Những sinh viên nam của khoa ANH VĂN và khoa TIN HỌC
-select student.name from student
-join faculty on student.faculty_id = faculty.id
-where student.gender = 'Nam' and faculty.name = 'Anh - Văn' or faculty.name = 'Tin học';
+select student.name, faculty.name from student,faculty
+where student.faculty_id = faculty.id and (faculty.name = 'Anh - Văn' or faculty.name = 'Tin học') and student.gender = 'Nam';
 -- 3. Cho biết sinh viên nào có điểm thi lần 1 môn cơ sở dữ liệu cao nhất
 select student.name, exam_management.mark from exam_management
 join student on student.id = exam_management.student_id
